@@ -37,4 +37,14 @@ abstract class BaseWordPress
 
         return new $this->resources[$name]($this->client);
     }
+
+    /**
+     * @param ?string $user_or_token
+     * @param ?string $password
+     * @return void
+     */
+    public function auth(?string $user_or_token = null, ?string $password = null): void
+    {
+        $this->client->auth($user_or_token, $password);
+    }
 }
