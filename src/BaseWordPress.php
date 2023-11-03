@@ -14,9 +14,9 @@ abstract class BaseWordPress
      */
     protected array $resources = [];
 
-    public function __construct(Client $client = null)
+    public function __construct(Client|string $client = null)
     {
-        $this->client = $client ?? new Client();
+        $this->client = (is_string($client) || null === $client) ? new Client($client) : $client;
     }
 
     public function __call(string $name, array $arguments): Resource
